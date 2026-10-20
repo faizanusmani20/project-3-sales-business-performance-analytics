@@ -1,0 +1,9 @@
+Step,Rows before,Rows after,Values changed,Note
+Trim text and collapse repeated spaces,10194,10194,32,cosmetic; Product Name: 32
+Customer ID to upper case,10194,10194,43,"Co-12640, Dl-13600, Dp-13240"
+Postal Code to text; leading zero restored on US ZIP codes,10194,10194,438,"states: Connecticut, Maine, Massachusetts, New Hampshire, New Jersey, Rhode Island"
+Remove exact repeat lines,10194,10192,2,"removed Row IDs 392 (US-2023-150119), 1700 (CA-2023-153623)"
+"Add Order Year, Order Quarter, Order Month, Shipping Days",10192,10192,0,"Shipping Days = Ship Date - Order Date (order to shipment, not delivery)"
+Flag lines of returned orders (is_returned),10192,10192,800,296 orders in the Returns sheet
+Flag lines dated after the analysis date (is_future_dated),10192,10192,1093,Order Date after 2026-10-15
+Flag analysis scope (in_scope = United States),10192,10192,199,Canadian rows set to out of scope

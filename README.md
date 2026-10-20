@@ -1,239 +1,131 @@
-# 📊 Sales & Business Performance Analytics
+# Sales & Business Performance Analytics: Superstore
 
-**An end-to-end data analytics project focused on sales performance, profitability, product analysis, customer segments, and regional business insights using Python and Tableau.**
+Analysis of a retail order dataset to measure revenue, profit, order volume and growth; find the products, regions and customer segments that drive or drain performance; and feed a Power BI dashboard.
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Data%20Analysis-Pandas-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![Tableau](https://img.shields.io/badge/Visualization-Tableau-E97627?logo=tableau&logoColor=white)](https://www.tableau.com/)
-[![Status](https://img.shields.io/badge/Project-In%20Progress-orange)](https://github.com/faizanusmani20/project-3-sales-business-performance-analytics)
+## Progress
 
-## 📌 Overview
+- [x] Week 1: data cleaning and validation (`notebooks/01_data_cleaning.ipynb`)
+- [ ] Week 1: exploratory data analysis (`notebooks/02_eda.ipynb`)
+- [ ] Week 2: KPI calculation and product, customer and region analysis (`notebooks/03_kpis.ipynb`)
+- [ ] Week 3: trend analysis and business insights
+- [ ] Week 4: Power BI dashboard, final report and presentation
 
-Businesses collect large amounts of sales data, but raw transactions alone do not explain which products perform best, where profits are being generated, or which regions and customer segments need attention.
+## Repository structure
 
-This project aims to transform raw sales data into a reliable analytical dataset, calculate key business performance indicators (KPIs), identify meaningful trends, and communicate findings through an interactive Tableau dashboard.
-
-The focus is not only on analyzing numbers, but also on translating data into **clear, evidence-based insights that can support business decisions.**
-
-> **Current status:** Data cleaning and initial validation are complete. KPI analysis, exploratory analysis, trend analysis, and the Tableau dashboard are planned next.
-
-## 🎯 Project Objectives
-
-- Clean, validate, and prepare sales data for analysis.
-- Measure total sales, profit, order volume, average order value, and profit margin.
-- Identify top-performing and potentially underperforming products and categories.
-- Analyze monthly, quarterly, and yearly sales and profit trends.
-- Compare performance across regions and customer segments.
-- Investigate returns, discounts, and loss-making transactions.
-- Develop an interactive Tableau dashboard.
-- Present evidence-based findings and practical business recommendations.
-
-## 🛠️ Tools & Technologies
-
-| Tool | Purpose |
-|---|---|
-| Python | Data processing and analysis |
-| Pandas | Data cleaning, transformation, and aggregation |
-| NumPy | Numerical operations |
-| Matplotlib | Data visualization |
-| Seaborn | Exploratory data visualization |
-| Jupyter Notebook / Google Colab | Analysis environment |
-| Tableau | Interactive business dashboard |
-| Git & GitHub | Version control and documentation |
-
-## 📂 Dataset Overview
-
-The project uses a Superstore-style sales dataset containing transaction, product, customer, geographical, sales, discount, and profit information.
-
-The source workbook contains three sheets:
-
-| Sheet | Description |
-|---|---|
-| Orders | Order lines, dates, customers, products, quantities, sales, discounts, and profit |
-| People | Regional manager information |
-| Returns | Order IDs associated with returned orders |
-
-### Dataset Summary
-
-| Metric | Validated count |
-|---|---:|
-| Order-line records | 10,194 |
-| Distinct orders | 5,111 |
-| Regional managers | 4 |
-| Returned orders | 296 |
-| Order-date coverage | January 2023 – December 2026 |
-
-Each row represents an order line, not necessarily a complete order. Distinct Order IDs must therefore be used when calculating order volume.
-
-*The original dataset's source and usage terms will be documented before final publication.*
-
-## 🧹 Data Cleaning & Validation
-
-The initial cleaning workflow includes:
-
-- Inspecting dataset dimensions, column names, and data types.
-- Converting order and shipping dates to datetime format.
-- Checking exact duplicate records and distinct order IDs.
-- Validating sales, quantity, discount, and profit fields.
-- Identifying returned orders using the Returns sheet.
-- Mapping regional managers using the People sheet.
-- Validating regional mappings and merge consistency.
-- Checking row counts, missing values, and date consistency.
-- Exporting the cleaned dataset for further analysis.
-
-### Data Quality Principles
-
-- Preserve the original source data.
-- Retain legitimate negative-profit transactions.
-- Distinguish order lines from distinct orders.
-- Document data exclusions and assumptions.
-- Validate analytical calculations before presenting results.
-
-## 📊 Business KPIs
-
-The following KPIs will be calculated using consistent definitions across Python and Tableau.
-
-| KPI | Calculation |
-|---|---|
-| Total Sales | Sum of the documented Sales field |
-| Total Profit | Sum of the documented Profit field |
-| Order Volume | Count of distinct valid Order IDs |
-| Average Order Value | Total Sales ÷ distinct eligible orders |
-| Profit Margin | Total Profit ÷ Total Sales × 100 |
-| Revenue Growth | (Current-period revenue − Previous comparable-period revenue) ÷ Previous-period revenue × 100 |
-
-Additional analysis will rank products and categories by sales, profit, and quantity, and compare regional and customer segment performance.
-
-Growth calculations will use comparable periods and handle zero or negative comparison-period revenue explicitly.
-
-## 🔍 Planned Analysis
-
-### 1. Exploratory Data Analysis
-
-- Sales and profit distributions.
-- Monthly and quarterly performance.
-- Product and category contribution.
-- Customer segment comparisons.
-- Regional performance.
-- Discounts, returns, and loss-making transactions.
-
-### 2. Product & Category Performance
-
-- Identify leading products by revenue and quantity.
-- Compare revenue contribution with profitability.
-- Investigate products or categories with low or negative profit.
-- Explore discount patterns where supported by the data.
-
-### 3. Time-Series Analysis
-
-- Examine monthly, quarterly, and yearly sales and profit.
-- Compare equivalent reporting periods.
-- Investigate potential growth or declining performance.
-- Evaluate seasonality only where sufficient historical data is available.
-
-### 4. Regional & Customer Analysis
-
-- Compare sales, profit, and order volume across regions.
-- Evaluate customer segment contribution.
-- Investigate differences in profitability and growth.
-- Develop recommendations supported by validated results.
-
-## 📈 Tableau Dashboard — Coming Soon
-
-The planned dashboard will organize business performance into four views.
-
-| Dashboard page | Planned content |
-|---|---|
-| Executive Overview | Sales, profit, orders, AOV, margin, and growth |
-| Product Performance | Product rankings, category contribution, and profitability |
-| Time Trends | Monthly, quarterly, and yearly performance |
-| Regional & Customer Analysis | Regional and segment comparisons |
-
-Interactive filters will be included for reporting period, region, category, and customer segment where applicable.
-
-The dashboard preview and workbook will be added to this repository after implementation and validation.
-
-## ⚠️ Data Limitations
-
-- **Future-dated records:** The dataset includes order dates extending beyond the current analysis date. These records require investigation before recent-period trends are interpreted.
-- **Order-line granularity:** Row counts are not equivalent to distinct order counts.
-- **Returns:** A return indicator identifies returned orders but does not automatically reverse their sales or profit.
-- **Profit:** Negative profit values are retained and may represent genuine losses.
-- **Seasonality:** Reliable seasonal conclusions require sufficient historical coverage.
-- **Business definitions:** The treatment of discounts, returns, costs, taxes, and shipping must follow the available dataset documentation.
-- **Causality:** Observed patterns alone do not establish why a business outcome occurred.
-
-These limitations will be considered when interpreting results and preparing recommendations.
-<!-- 
-## 🗂️ Planned Repository Structure
-
-```text  
-project-3-sales-business-performance-analytics/
-│
+```
+superstore-sales-analytics/
 ├── data/
-│   ├── raw/
-│   ├── interim/
+│   ├── raw/sample_-_superstore.xls        source workbook (never edited)
+│   ├── interim/orders_clean.csv           every row after cleaning, with flag columns
 │   └── processed/
-│
+│       ├── orders_analysis.csv            analysis set: United States order lines
 ├── notebooks/
 │   ├── 01_data_cleaning.ipynb
-│   ├── 02_exploratory_analysis.ipynb
-│   ├── 03_kpi_analysis.ipynb
-│   └── 04_trend_analysis.ipynb
-│
-├── src/
-│   ├── data_cleaning.py
-│   └── kpi_calculations.py
-│
-├── dashboard/
-│
 ├── reports/
-│   └── figures/
-│
+│   ├── data_quality_checks.csv, cleaning_log.csv, data_dictionary.csv
+├── src/
+│   ├── cleaning.py                        loading, quality checks, cleaning rules
+│   ├── checks.py                          claim checks used at the end of each notebook
+│   └── __init__.py
 ├── requirements.txt
-├── .gitignore
 └── README.md
 ```
--->
-*This is the intended structure, not a claim that every listed file already exists. The structure will be updated to match the actual repository as the project progresses.*
 
-## ⚙️ Getting Started
+## Setup
 
-### Prerequisites
-
-- Python 3.9 or later
-- Jupyter Notebook or Google Colab
-- Git
-- Tableau Desktop or Tableau Public for the dashboard stage
-
-### Clone the Repository
+Requires Python 3.9 or later (tested on 3.11 and 3.13).
 
 ```bash
-git clone https://github.com/faizanusmani20/project-3-sales-business-performance-analytics.git
-
-cd project-3-sales-business-performance-analytics
-```
-
-### Install Dependencies
-
-Once `requirements.txt` has been added and updated with the project's actual dependencies, run:
-
-```bash
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+jupyter notebook
 ```
 
-The analysis notebooks will be documented and added as the workflow develops. Dataset access and paths will be explained alongside the relevant files.
+Run the notebooks **in order**: each one reads the files written by the one before. Each notebook ends with a claim-verification cell that recomputes every number quoted in its summary and stops with an error if any of them no longer matches the data.
 
-## 📋 Project Roadmap
+**Google Colab:** clone the repository, then run the notebooks from inside it:
 
-- [x] Initial data cleaning and validation
-- [x] Cleaned dataset exported
-- [ ] Exploratory data analysis
-- [ ] KPI calculations and validation
-- [ ] Product and category analysis
-- [ ] Regional and customer segment analysis
-- [ ] Trend analysis and business findings
-- [ ] Interactive Tableau dashboard
-- [ ] Final analytical report and recommendations
-- [ ] Project presentation and documentation review
+```python
+!git clone https://github.com/<your-account>/<this-repo>.git
+%cd <this-repo>/notebooks
+```
 
+## Data source
+
+- **File:** `data/raw/sample_-_superstore.xls`, the "Sample - Superstore" retail dataset published by Tableau as sample data. This copy covers orders dated 3 January 2023 to 30 December 2026.
+- **Sheets:**
+  - **Orders:** 10,194 rows × 21 columns. One row is one **order line**; there are 5,111 orders.
+  - **Returns:** 296 returned Order IDs.
+  - **People:** regional managers; not used.
+- The raw file is never edited. All changes are made in code (`src/cleaning.py`) and written to new files.
+
+## Scope and assumptions
+
+- **United States only.** The 200 Canadian rows fail the integrity checks that every US row passes:
+  - 37% of them carry another product's price.
+  - 14 lines copy US orders line for line.
+  - 29 of 63 Canadian order numbers reappear in another year.
+  - One customer has five IDs inside a single order.
+
+  They are kept in `data/interim/orders_clean.csv` with `in_scope = False`. Notebook 01 (section 4) shows the evidence and their effect on product results.
+- **Gross figures:** sales and profit include returned orders unless a figure is labelled *net*. The Returns sheet lists whole orders without amounts, so net figures treat a returned order as fully returned.
+- **Dates:** the analysis date is **15 October 2026**. The 1,069 US lines dated after it are kept and flagged (`is_future_dated`) so 2026 can be compared as a full year; 2026 is also compared like for like (1 January–15 October) with 2025.
+- **Currency:** there is no currency field; amounts are treated as US dollars.
+- **Sales** are after discount (list price × quantity × (1 − discount)). **Profit** is used as provided.
+- **Shipping Days** = Ship Date − Order Date, i.e. the time to shipment. The data has no delivery date.
+
+## Cleaning rules
+
+| Rule | Rows affected |
+|---|---|
+| Trim text and collapse repeated spaces | 7 product names (32 lines) |
+| Upper-case Customer IDs (checked: no two customers merge) | 3 IDs (43 lines) |
+| Postal Code stored as text; leading zero restored on US ZIP codes | 438 lines (CT, ME, MA, NH, NJ, RI) |
+| Remove exact repeat lines (identical in every column except Row ID) | 2 lines (Row IDs 392 and 1700) |
+| Add Order Year, Order Quarter, Order Month, Shipping Days | all rows |
+| Flag `is_returned`, `is_future_dated`, `in_scope` | 800, 1,093 and 199 out-of-scope rows |
+
+No values are estimated or filled, because there are no missing values. Every raw line is accounted for: analysis set (9,993) + Canadian rows (199) + removed repeats (2) = 10,194, and sales, profit and quantity reconcile exactly.
+
+**Known issue kept as is:** 32 Product IDs cover more than one product name, so product analysis identifies a product by Product ID + Product Name.
+
+## Data dictionary
+
+| Column | Type | Description |
+|---|---|---|
+| Row ID | integer | Source line number; unique. |
+| Order ID | text | Order identifier, e.g. US-2023-103800 (country-year-number). One order can have several lines. |
+| Order Date | date | Date the order was placed. |
+| Ship Date | date | Date the order was shipped. |
+| Ship Mode | text | Same Day, First Class, Second Class or Standard Class. |
+| Customer ID | text | Customer identifier; upper-cased during cleaning. |
+| Customer Name | text | Customer name as provided. |
+| Segment | text | Consumer, Corporate or Home Office. |
+| Country/Region | text | United States or Canada (only United States rows are analysed). |
+| City | text | Shipping city. |
+| State/Province | text | Shipping state or province. |
+| Postal Code | text | US: 5-digit ZIP code (leading zeros restored). Canada: 3-character area prefix only. |
+| Region | text | Central, East, South or West. |
+| Product ID | text | Category code - sub-category code - number. 32 IDs cover more than one product name. |
+| Category | text | Furniture, Office Supplies or Technology. |
+| Sub-Category | text | 17 sub-categories, each under one category. |
+| Product Name | text | Product description; repeated spaces collapsed during cleaning. |
+| Sales | number | Line revenue after discount (= list price x Quantity x (1 - Discount)). No currency field; treated as USD. |
+| Quantity | integer | Units on the line. |
+| Discount | number | Fraction taken off the list price, 0 to 0.8. |
+| Profit | number | Line profit as provided; negative for loss-making lines. |
+| Order Year | integer | Derived: year of Order Date. |
+| Order Quarter | text | Derived: quarter of Order Date, e.g. 2023-Q1. |
+| Order Month | date | Derived: first day of the Order Date month. |
+| Shipping Days | integer | Derived: Ship Date - Order Date (time to shipment; there is no delivery date). |
+| is_returned | true/false | The order is listed in the Returns sheet. |
+| is_future_dated | true/false | Order Date is after the analysis date, 2026-10-15. |
+| in_scope | true/false | United States row; the rows used for all analysis. |
+
+## Limitations
+
+- The dataset is a published sample, not live data. 1,069 US lines are dated after the analysis date, and all 2026 figures for 16 October onwards depend on them.
+- The Returns sheet has no amounts or dates, so net figures assume each returned order was fully returned.
+- There is no cost, tax, shipping-charge, currency or sales-channel field. Profit cannot be recomputed and channel analysis is not possible.
+- Relationships found (for example between discount and profit) are associations, not proof of cause.

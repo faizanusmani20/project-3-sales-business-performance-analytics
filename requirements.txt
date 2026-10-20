@@ -1,0 +1,6 @@
+# Tested with Python 3.11 + pandas 2.2.2 + matplotlib 3.7.5, and Python 3.13 + pandas 3.0.5
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+xlrd>=2.0.1   # reads the legacy .xls workbook
+jupyter

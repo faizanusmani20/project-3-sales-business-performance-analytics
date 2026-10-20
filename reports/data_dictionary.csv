@@ -1,0 +1,29 @@
+Column,Type,Description
+Row ID,integer,Source line number; unique.
+Order ID,text,"Order identifier, e.g. US-2023-103800 (country-year-number). One order can have several lines."
+Order Date,date,Date the order was placed.
+Ship Date,date,Date the order was shipped.
+Ship Mode,text,"Same Day, First Class, Second Class or Standard Class."
+Customer ID,text,Customer identifier; upper-cased during cleaning.
+Customer Name,text,Customer name as provided.
+Segment,text,"Consumer, Corporate or Home Office."
+Country/Region,text,United States or Canada (only United States rows are analysed).
+City,text,Shipping city.
+State/Province,text,Shipping state or province.
+Postal Code,text,US: 5-digit ZIP code (leading zeros restored). Canada: 3-character area prefix only.
+Region,text,"Central, East, South or West."
+Product ID,text,Category code - sub-category code - number. 32 IDs cover more than one product name.
+Category,text,"Furniture, Office Supplies or Technology."
+Sub-Category,text,"17 sub-categories, each under one category."
+Product Name,text,Product description; repeated spaces collapsed during cleaning.
+Sales,number,Line revenue after discount (= list price x Quantity x (1 - Discount)). No currency field; treated as USD.
+Quantity,integer,Units on the line.
+Discount,number,"Fraction taken off the list price, 0 to 0.8."
+Profit,number,Line profit as provided; negative for loss-making lines.
+Order Year,integer,Derived: year of Order Date.
+Order Quarter,text,"Derived: quarter of Order Date, e.g. 2023-Q1."
+Order Month,date,Derived: first day of the Order Date month.
+Shipping Days,integer,Derived: Ship Date - Order Date (time to shipment; there is no delivery date).
+is_returned,true/false,The order is listed in the Returns sheet.
+is_future_dated,true/false,"Order Date is after the analysis date, 2026-10-15."
+in_scope,true/false,United States row; the rows used for all analysis.
