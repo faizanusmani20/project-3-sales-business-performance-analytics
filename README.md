@@ -5,7 +5,7 @@ Analysis of a retail order dataset to measure revenue, profit, order volume and 
 ## Progress
 
 - [x] Week 1: data cleaning and validation (`notebooks/01_data_cleaning.ipynb`)
-- [ ] Week 1: exploratory data analysis (`notebooks/02_eda.ipynb`)
+- [x] Week 1: exploratory data analysis (`notebooks/02_eda.ipynb`)
 - [ ] Week 2: KPI calculation and product, customer and region analysis (`notebooks/03_kpis.ipynb`)
 - [ ] Week 3: trend analysis and business insights
 - [ ] Week 4: Power BI dashboard, final report and presentation
@@ -21,11 +21,14 @@ superstore-sales-analytics/
 │       ├── orders_analysis.csv            analysis set: United States order lines
 ├── notebooks/
 │   ├── 01_data_cleaning.ipynb
+│   ├── 02_eda.ipynb
 ├── reports/
 │   ├── data_quality_checks.csv, cleaning_log.csv, data_dictionary.csv
+│   └── figures/                           charts saved by the EDA notebook
 ├── src/
 │   ├── cleaning.py                        loading, quality checks, cleaning rules
 │   ├── checks.py                          claim checks used at the end of each notebook
+│   ├── viz.py                             shared chart style
 │   └── __init__.py
 ├── requirements.txt
 └── README.md
@@ -122,6 +125,20 @@ No values are estimated or filled, because there are no missing values. Every ra
 | is_returned | true/false | The order is listed in the Returns sheet. |
 | is_future_dated | true/false | Order Date is after the analysis date, 2026-10-15. |
 | in_scope | true/false | United States row; the rows used for all analysis. |
+
+## Exploratory findings (notebook 02)
+
+*US order lines, gross of returns, including lines dated after 15 October 2026.*
+
+- Sales are **$2.30M** and profit **$286K**, a **12.5% margin**. 18.7% of lines lose money, and line values are heavily skewed (median $54, mean $230).
+- **Furniture** is second in sales ($742K) but earns only a 2.5% margin. Technology (17.4%) and Office Supplies (17.0%) are healthy.
+- Only **Tables, Bookcases and Supplies** lose money. Tables lose the most: −$17.7K on $207K of sales, with a 26.1% average discount. Machines earn just 1.8%. Copiers rank 8th in sales but earn the most profit.
+- **Discounts:** margin is 29.5% with no discount, positive up to a 20% discount, and negative at every level of 30% or more. Lines discounted 30% or more (13.9% of lines) lose $135K. This is an association: discount levels differ by region and product.
+- **Seasonality:** September, November and December are the top sales months every year; September–December brings 50–54% of annual sales.
+- **Regions:** West and East bring 61.1% of sales and 69.8% of profit. Central has the lowest margin (7.9%) and the highest average discount (24.0%).
+- **Shipping:** Standard Class averages 5.0 days to shipment and First Class 2.2 days; 95.6% of Same Day lines ship on the order date.
+
+Charts are in `reports/figures/`.
 
 ## Limitations
 
