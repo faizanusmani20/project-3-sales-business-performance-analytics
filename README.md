@@ -1,51 +1,53 @@
 # 📊 Sales & Business Performance Analytics
 
-**An end-to-end data analytics project focused on sales performance, profitability, product analysis, customer segments, and regional business insights using Python and Tableau.**
+**An end-to-end data analytics project using Python, Pandas, and Tableau to evaluate sales performance, profitability, product performance, customer segments, and regional business results.**
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Data%20Analysis-Pandas-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Tableau](https://img.shields.io/badge/Visualization-Tableau-E97627?logo=tableau&logoColor=white)](https://www.tableau.com/)
 [![Status](https://img.shields.io/badge/Project-In%20Progress-orange)](https://github.com/faizanusmani20/project-3-sales-business-performance-analytics)
 
-## 📌 Overview
+## 📌 Project Overview
 
-Businesses collect large amounts of sales data, but raw transactions alone do not explain which products perform best, where profits are being generated, or which regions and customer segments need attention.
+Raw sales data contains valuable information, but it does not immediately explain which products generate the most profit, which categories underperform, or how different regions and customer segments contribute to business performance.
 
-This project aims to transform raw sales data into a reliable analytical dataset, calculate key business performance indicators (KPIs), identify meaningful trends, and communicate findings through an interactive Tableau dashboard.
+This project transforms a Superstore-style sales dataset into an analytical resource through data cleaning, validation, KPI calculation, and business performance analysis. The goal is to turn transaction-level data into clear, evidence-based findings that can support business decisions.
 
-The focus is not only on analyzing numbers, but also on translating data into **clear, evidence-based insights that can support business decisions.**
+The project follows a practical data analytics workflow:
 
-> **Current status:** Data cleaning and initial validation are complete. KPI analysis, exploratory analysis, trend analysis, and the Tableau dashboard are planned next.
+**Data Cleaning → Data Validation → KPI Calculation → Business Analysis → Visualization → Insights & Recommendations**
+
+**Current status:** Data preparation, four KPI calculations, and initial product, category, customer segment, and regional analyses have been completed. Further exploratory analysis, trend analysis, and the Tableau dashboard remain in progress.
 
 ## 🎯 Project Objectives
 
-- Clean, validate, and prepare sales data for analysis.
-- Measure total sales, profit, order volume, average order value, and profit margin.
-- Identify top-performing and potentially underperforming products and categories.
-- Analyze monthly, quarterly, and yearly sales and profit trends.
-- Compare performance across regions and customer segments.
-- Investigate returns, discounts, and loss-making transactions.
+- Prepare a reliable dataset for business analysis.
+- Calculate four key performance indicators (KPIs).
+- Document the meaning of all 23 dataset columns.
+- Compare sales and profitability across product categories and subcategories.
+- Identify high-performing and loss-making product areas.
+- Evaluate business performance across customer segments and regions.
+- Export analytical results into reusable CSV files.
 - Develop an interactive Tableau dashboard.
-- Present evidence-based findings and practical business recommendations.
+- Communicate findings through a final business report.
 
 ## 🛠️ Tools & Technologies
 
 | Tool | Purpose |
 |---|---|
 | Python | Data processing and analysis |
-| Pandas | Data cleaning, transformation, and aggregation |
-| NumPy | Numerical operations |
-| Matplotlib | Data visualization |
-| Seaborn | Exploratory data visualization |
-| Jupyter Notebook / Google Colab | Analysis environment |
-| Tableau | Interactive business dashboard |
-| Git & GitHub | Version control and documentation |
+| Pandas | Data cleaning, aggregation, and KPI calculations |
+| NumPy | Numerical operations where required |
+| Matplotlib & Seaborn | Exploratory data visualization |
+| Jupyter Notebook | Executing and documenting the analysis |
+| Tableau | Planned interactive dashboard |
+| Git & GitHub | Version control and project documentation |
 
 ## 📂 Dataset Overview
 
-The project uses a Superstore-style sales dataset containing transaction, product, customer, geographical, sales, discount, and profit information.
+The project uses a Superstore-style transactional dataset containing order details, customer information, product classifications, geographical information, sales, discounts, and profit.
 
-The source workbook contains three sheets:
+The original workbook contains three sheets:
 
 | Sheet | Description |
 |---|---|
@@ -55,185 +57,207 @@ The source workbook contains three sheets:
 
 ### Dataset Summary
 
-| Metric | Validated count |
+| Metric | Value |
 |---|---:|
 | Order-line records | 10,194 |
 | Distinct orders | 5,111 |
 | Regional managers | 4 |
 | Returned orders | 296 |
-| Order-date coverage | January 2023 – December 2026 |
+| Dataset columns | 23 |
 
-Each row represents an order line, not necessarily a complete order. Distinct Order IDs must therefore be used when calculating order volume.
+Each row represents an order line, not necessarily a complete order. Therefore, order volume is calculated using distinct `Order ID` values rather than counting rows.
 
-*The original dataset's source and usage terms will be documented before final publication.*
+The source dataset contains future-dated records relative to the analysis date. These records have not been silently excluded from the reported KPI results; date-related limitations are documented below.
 
-## 🧹 Data Cleaning & Validation
+*The dataset source and applicable redistribution terms should be confirmed before publishing the raw data.*
 
-The initial cleaning workflow includes:
+## 🧹 Data Cleaning & Preparation
+
+The data preparation workflow focuses on improving consistency and making the dataset suitable for analysis.
+
+Key activities include:
 
 - Inspecting dataset dimensions, column names, and data types.
-- Converting order and shipping dates to datetime format.
-- Checking exact duplicate records and distinct order IDs.
+- Checking missing values and duplicate records.
+- Converting order and shipping dates to appropriate date formats.
 - Validating sales, quantity, discount, and profit fields.
-- Identifying returned orders using the Returns sheet.
+- Reviewing distinct order IDs and order-line granularity.
+- Integrating return information using order identifiers.
 - Mapping regional managers using the People sheet.
 - Validating regional mappings and merge consistency.
-- Checking row counts, missing values, and date consistency.
-- Exporting the cleaned dataset for further analysis.
+- Exporting the prepared dataset for downstream analysis.
 
 ### Data Quality Principles
 
 - Preserve the original source data.
 - Retain legitimate negative-profit transactions.
-- Distinguish order lines from distinct orders.
-- Document data exclusions and assumptions.
-- Validate analytical calculations before presenting results.
+- Distinguish order-line records from distinct orders.
+- Document assumptions and data limitations.
+- Validate calculations before using results in business recommendations.
 
-## 📊 Business KPIs
+## 📊 Key Performance Indicators (KPIs)
 
-The following KPIs will be calculated using consistent definitions across Python and Tableau.
+**Four KPIs have been calculated** using the current `superstore_for_KPI.csv` dataset.
 
-| KPI | Calculation |
+| KPI | Definition | Calculated Result |
+|---|---|---:|
+| Total Sales | Sum of all values in the Sales field | $2,326,534.35 |
+| Total Profit | Sum of all values in the Profit field | $292,296.81 |
+| Profit Margin | Total Profit ÷ Total Sales × 100 | 12.56% |
+| Total Orders | Count of distinct Order IDs | 5,111 |
+
+### KPI Interpretation
+
+- **Total Sales:** Measures the total recorded sales revenue in the dataset.
+- **Total Profit:** Measures the net profit represented by the Profit field.
+- **Profit Margin:** Shows the recorded profit as a percentage of sales.
+- **Total Orders:** Measures the number of distinct orders, avoiding the overcounting that would result from counting individual order lines.
+
+These results are calculated from the full dataset currently used for KPI analysis. They are not restricted to a selected reporting period.
+
+## 🔍 Business Performance Analysis
+
+Four main areas have been analyzed so far.
+
+### 1. Category Performance
+
+| Category | Sales | Profit |
+|---|---:|---:|
+| Technology | $839,893.28 | $146,543.38 |
+| Furniture | $754,747.76 | $19,730.00 |
+| Office Supplies | $731,893.31 | $126,023.44 |
+
+**Initial finding:** Technology has the highest sales and profit among the three categories. Furniture generates substantial sales but considerably lower profit, making its profitability worth investigating further.
+
+### 2. Subcategory Performance
+
+Subcategories have been compared using both sales and profit to avoid judging performance by revenue alone.
+
+| Subcategory | Sales | Profit |
+|---|---:|---:|
+| Chairs | $335,768.25 | $27,223.53 |
+| Phones | $331,842.64 | $45,050.83 |
+| Tables | $208,020.18 | -$17,753.21 |
+| Binders | $207,354.88 | $31,426.10 |
+| Copiers | $150,745.29 | $56,093.94 |
+| Bookcases | $115,361.20 | -$3,632.07 |
+
+*Selected subcategories are shown here; the complete subcategory results are available in the exported analysis table.*
+
+**Initial findings:**
+
+- Chairs and Phones are among the leading subcategories by sales.
+- Copiers generate the highest profit among the subcategories shown.
+- Tables and Bookcases record negative profit despite generating sales.
+- High sales do not necessarily indicate high profitability.
+
+### 3. Customer Segment Analysis
+
+| Segment | Sales | Profit | Distinct Orders |
+|---|---:|---:|---:|
+| Consumer | $1,170,659.79 | $136,371.45 | 2,628 |
+| Corporate | $715,806.13 | $94,249.64 | 1,552 |
+| Home Office | $440,068.43 | $61,675.73 | 931 |
+
+**Initial finding:** Consumer contributes the highest sales, profit, and order volume among the three segments. Corporate and Home Office also contribute positively to total profit.
+
+### 4. Regional Performance
+
+| Region | Sales | Profit | Distinct Orders |
+|---|---:|---:|---:|
+| West | $739,813.61 | $110,798.82 | 1,635 |
+| East | $691,828.17 | $94,883.26 | 1,475 |
+| Central | $503,170.67 | $39,865.31 | 1,179 |
+| South | $391,721.90 | $46,749.43 | 822 |
+
+**Initial findings:**
+
+- West records the highest sales and profit among the four regions.
+- East is the second-highest region by sales and profit.
+- Central has higher sales than South but lower profit.
+- Regional performance should be evaluated using both sales and profitability.
+
+These are descriptive findings from the current dataset, not proof of the causes behind business performance.
+
+## 📖 Dataset Column Documentation
+
+A column description table has been created to explain the meaning of the dataset fields.
+
+- **Documented columns:** 23 existing dataset columns.
+- **New business-data columns created:** None by the column-description code.
+- **Documentation output:** `outputs/column_descriptions.csv`.
+
+The documentation includes fields such as `Order ID`, `Order Date`, `Customer ID`, `Category`, `Sub-Category`, `Sales`, `Quantity`, `Discount`, `Profit`, `Returned`, and `Regional Manager`.
+
+The description table helps teammates understand the data before performing additional analysis. It does not modify the original dataset or add new columns to it.
+
+## 📁 Analysis Outputs
+
+The analysis notebook exports its results as CSV files for reuse in Python, reporting, and the planned Tableau workflow.
+
+| Output file | Contents |
 |---|---|
-| Total Sales | Sum of the documented Sales field |
-| Total Profit | Sum of the documented Profit field |
-| Order Volume | Count of distinct valid Order IDs |
-| Average Order Value | Total Sales ÷ distinct eligible orders |
-| Profit Margin | Total Profit ÷ Total Sales × 100 |
-| Revenue Growth | (Current-period revenue − Previous comparable-period revenue) ÷ Previous-period revenue × 100 |
+| `outputs/kpi_summary.csv` | Four calculated KPIs |
+| `outputs/column_descriptions.csv` | Dataset column names and descriptions |
+| `outputs/category_analysis.csv` | Sales and profit by category |
+| `outputs/subcategory_analysis.csv` | Sales and profit by subcategory |
+| `outputs/segment_analysis.csv` | Sales, profit, and orders by customer segment |
+| `outputs/region_analysis.csv` | Sales, profit, and orders by region |
 
-Additional analysis will rank products and categories by sales, profit, and quantity, and compare regional and customer segment performance.
+These filenames describe the intended outputs of the notebook. The repository should contain the files that have actually been generated and committed.
 
-Growth calculations will use comparable periods and handle zero or negative comparison-period revenue explicitly.
+## 📈 Tableau Dashboard — Planned
 
-## 🔍 Planned Analysis
+The next visualization stage is an interactive Tableau dashboard based on the validated analytical results.
 
-### 1. Exploratory Data Analysis
-
-- Sales and profit distributions.
-- Monthly and quarterly performance.
-- Product and category contribution.
-- Customer segment comparisons.
-- Regional performance.
-- Discounts, returns, and loss-making transactions.
-
-### 2. Product & Category Performance
-
-- Identify leading products by revenue and quantity.
-- Compare revenue contribution with profitability.
-- Investigate products or categories with low or negative profit.
-- Explore discount patterns where supported by the data.
-
-### 3. Time-Series Analysis
-
-- Examine monthly, quarterly, and yearly sales and profit.
-- Compare equivalent reporting periods.
-- Investigate potential growth or declining performance.
-- Evaluate seasonality only where sufficient historical data is available.
-
-### 4. Regional & Customer Analysis
-
-- Compare sales, profit, and order volume across regions.
-- Evaluate customer segment contribution.
-- Investigate differences in profitability and growth.
-- Develop recommendations supported by validated results.
-
-## 📈 Tableau Dashboard — Coming Soon
-
-The planned dashboard will organize business performance into four views.
-
-| Dashboard page | Planned content |
+| Planned dashboard view | Purpose |
 |---|---|
-| Executive Overview | Sales, profit, orders, AOV, margin, and growth |
-| Product Performance | Product rankings, category contribution, and profitability |
-| Time Trends | Monthly, quarterly, and yearly performance |
-| Regional & Customer Analysis | Regional and segment comparisons |
+| Executive Overview | Display the four KPIs: sales, profit, profit margin, and orders |
+| Product Performance | Compare categories and subcategories by sales and profit |
+| Customer Segment Analysis | Compare segment contribution and order volume |
+| Regional Analysis | Compare regional sales and profitability |
+| Trend Analysis | Explore sales and profit over time, after validating date coverage |
 
-Interactive filters will be included for reporting period, region, category, and customer segment where applicable.
+Filters for reporting period, region, category, and customer segment may be included where appropriate.
 
-The dashboard preview and workbook will be added to this repository after implementation and validation.
+The Tableau workbook, dashboard screenshots, and final insights will be added after implementation and validation.
 
-## ⚠️ Data Limitations
+## ⚠️ Data Limitations & Assumptions
 
-- **Future-dated records:** The dataset includes order dates extending beyond the current analysis date. These records require investigation before recent-period trends are interpreted.
-- **Order-line granularity:** Row counts are not equivalent to distinct order counts.
-- **Returns:** A return indicator identifies returned orders but does not automatically reverse their sales or profit.
-- **Profit:** Negative profit values are retained and may represent genuine losses.
-- **Seasonality:** Reliable seasonal conclusions require sufficient historical coverage.
-- **Business definitions:** The treatment of discounts, returns, costs, taxes, and shipping must follow the available dataset documentation.
-- **Causality:** Observed patterns alone do not establish why a business outcome occurred.
+- **Future-dated records:** The dataset contains order dates extending beyond the current analysis date. The reported KPIs use the full dataset and should not be interpreted as final current-period performance without further date validation.
+- **Order-line granularity:** A single order may contain multiple rows. Distinct `Order ID` values are used to calculate order volume.
+- **Returns:** A returned-order indicator does not automatically reverse the associated sales or profit.
+- **Negative profit:** Negative-profit transactions are retained because they may represent genuine business losses.
+- **Profitability:** The analysis uses the provided Profit field; its underlying accounting definition depends on the source dataset.
+- **Trend analysis:** Growth and seasonality conclusions require suitable date coverage and comparable reporting periods.
+- **Causality:** Observed differences identify areas for investigation but do not, by themselves, establish why performance differs.
 
-These limitations will be considered when interpreting results and preparing recommendations.
-<!-- 
-## 🗂️ Planned Repository Structure
+## 🚀 Project Roadmap
 
-```text  
-project-3-sales-business-performance-analytics/
-│
-├── data/
-│   ├── raw/
-│   ├── interim/
-│   └── processed/
-│
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_exploratory_analysis.ipynb
-│   ├── 03_kpi_analysis.ipynb
-│   └── 04_trend_analysis.ipynb
-│
-├── src/
-│   ├── data_cleaning.py
-│   └── kpi_calculations.py
-│
-├── dashboard/
-│
-├── reports/
-│   └── figures/
-│
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
--->
-*This is the intended structure, not a claim that every listed file already exists. The structure will be updated to match the actual repository as the project progresses.*
+- [x] Inspect and prepare the sales dataset
+- [x] Perform initial data validation
+- [x] Calculate four business KPIs
+- [x] Analyze category and subcategory performance
+- [x] Analyze customer segment performance
+- [x] Analyze regional performance
+- [x] Create dataset column documentation
+- [x] Export initial analysis results to CSV
+- [ ] Complete exploratory data visualization
+- [ ] Validate and analyze time-based trends
+- [ ] Develop the interactive Tableau dashboard
+- [ ] Write the final business findings and recommendations
+- [ ] Add dashboard screenshots and final project documentation
 
-## ⚙️ Getting Started
 
-### Prerequisites
 
-- Python 3.9 or later
-- Jupyter Notebook or Google Colab
-- Git
-- Tableau Desktop or Tableau Public for the dashboard stage
 
-### Clone the Repository
+### Run the Analysis
 
-```bash
-git clone https://github.com/faizanusmani20/project-3-sales-business-performance-analytics.git
+1. Open the KPI and business analysis notebook in Jupyter Notebook.
+2. Place the required dataset at the path expected by the notebook.
+3. Run the notebook cells in order.
+4. Review the KPI summary and analysis tables.
+5. Check the generated CSV files in the `outputs/` directory.
 
-cd project-3-sales-business-performance-analytics
-```
-
-### Install Dependencies
-
-Once `requirements.txt` has been added and updated with the project's actual dependencies, run:
-
-```bash
-pip install -r requirements.txt
-```
-
-The analysis notebooks will be documented and added as the workflow develops. Dataset access and paths will be explained alongside the relevant files.
-
-## 📋 Project Roadmap
-
-- [x] Initial data cleaning and validation
-- [x] Cleaned dataset exported
-- [ ] Exploratory data analysis
-- [ ] KPI calculations and validation
-- [ ] Product and category analysis
-- [ ] Regional and customer segment analysis
-- [ ] Trend analysis and business findings
-- [ ] Interactive Tableau dashboard
-- [ ] Final analytical report and recommendations
-- [ ] Project presentation and documentation review
+The actual dataset filename and dependencies should match the files committed to the repository.
 
