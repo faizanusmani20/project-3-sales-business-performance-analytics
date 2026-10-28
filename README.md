@@ -222,16 +222,6 @@ Filters for reporting period, region, category, and customer segment may be incl
 
 The Tableau workbook, dashboard screenshots, and final insights will be added after implementation and validation.
 
-## ⚠️ Data Limitations & Assumptions
-
-- **Future-dated records:** The dataset contains order dates extending beyond the current analysis date. The reported KPIs use the full dataset and should not be interpreted as final current-period performance without further date validation.
-- **Order-line granularity:** A single order may contain multiple rows. Distinct `Order ID` values are used to calculate order volume.
-- **Returns:** A returned-order indicator does not automatically reverse the associated sales or profit.
-- **Negative profit:** Negative-profit transactions are retained because they may represent genuine business losses.
-- **Profitability:** The analysis uses the provided Profit field; its underlying accounting definition depends on the source dataset.
-- **Trend analysis:** Growth and seasonality conclusions require suitable date coverage and comparable reporting periods.
-- **Causality:** Observed differences identify areas for investigation but do not, by themselves, establish why performance differs.
-
 ## 🚀 Project Roadmap
 
 - [x] Inspect and prepare the sales dataset
