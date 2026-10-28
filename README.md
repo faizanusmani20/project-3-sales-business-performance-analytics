@@ -191,20 +191,6 @@ The documentation includes fields such as `Order ID`, `Order Date`, `Customer ID
 
 The description table helps teammates understand the data before performing additional analysis. It does not modify the original dataset or add new columns to it.
 
-## 📁 Analysis Outputs
-
-The analysis notebook exports its results as CSV files for reuse in Python, reporting, and the planned Tableau workflow.
-
-| Output file | Contents |
-|---|---|
-| `outputs/kpi_summary.csv` | Four calculated KPIs |
-| `outputs/column_descriptions.csv` | Dataset column names and descriptions |
-| `outputs/category_analysis.csv` | Sales and profit by category |
-| `outputs/subcategory_analysis.csv` | Sales and profit by subcategory |
-| `outputs/segment_analysis.csv` | Sales, profit, and orders by customer segment |
-| `outputs/region_analysis.csv` | Sales, profit, and orders by region |
-
-These filenames describe the intended outputs of the notebook. The repository should contain the files that have actually been generated and committed.
 
 ## 📈 Tableau Dashboard — Planned
 
@@ -238,16 +224,4 @@ The Tableau workbook, dashboard screenshots, and final insights will be added af
 - [ ] Write the final business findings and recommendations
 - [ ] Add dashboard screenshots and final project documentation
 
-
-
-
-### Run the Analysis
-
-1. Open the KPI and business analysis notebook in Jupyter Notebook.
-2. Place the required dataset at the path expected by the notebook.
-3. Run the notebook cells in order.
-4. Review the KPI summary and analysis tables.
-5. Check the generated CSV files in the `outputs/` directory.
-
-The actual dataset filename and dependencies should match the files committed to the repository.
 
