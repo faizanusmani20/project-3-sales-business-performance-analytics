@@ -1,227 +1,210 @@
-# 📊 Sales & Business Performance Analytics
+# Sales & Business Performance Analytics Dashboard
 
-**An end-to-end data analytics project using Python, Pandas, and Tableau to evaluate sales performance, profitability, product performance, customer segments, and regional business results.**
+An end-to-end data analytics project focused on analyzing sales, profitability, product performance, customer segments, and regional trends using the **Sample Superstore Dataset**. The project uses Python for data cleaning and exploratory data analysis (EDA), and Microsoft Power BI for interactive business intelligence and visualization.
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Data%20Analysis-Pandas-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![Tableau](https://img.shields.io/badge/Visualization-Tableau-E97627?logo=tableau&logoColor=white)](https://www.tableau.com/)
-[![Status](https://img.shields.io/badge/Project-In%20Progress-orange)](https://github.com/faizanusmani20/project-3-sales-business-performance-analytics)
+## Project Overview
 
-## 📌 Project Overview
+The objective of this project is to transform raw transactional sales data into meaningful business insights that can support data-driven decision-making.
 
-Raw sales data contains valuable information, but it does not immediately explain which products generate the most profit, which categories underperform, or how different regions and customer segments contribute to business performance.
+The analysis focuses on identifying sales trends, evaluating profitability, understanding customer purchasing behavior, and detecting products or regions that require business attention.
 
-This project transforms a Superstore-style sales dataset into an analytical resource through data cleaning, validation, KPI calculation, and business performance analysis. The goal is to turn transaction-level data into clear, evidence-based findings that can support business decisions.
+## Objectives
 
-The project follows a practical data analytics workflow:
+- Clean and prepare raw sales data for analysis.
+- Calculate key business performance indicators (KPIs).
+- Analyze sales and profit trends over time.
+- Evaluate product and category-level performance.
+- Compare regional and customer-segment performance.
+- Investigate the relationship between discounts and profitability.
+- Build an interactive Power BI dashboard.
+- Provide actionable business recommendations based on analytical findings.
 
-**Data Cleaning → Data Validation → KPI Calculation → Business Analysis → Visualization → Insights & Recommendations**
+## Dataset
 
-**Current status:** Data preparation, four KPI calculations, and initial product, category, customer segment, and regional analyses have been completed. Further exploratory analysis, trend analysis, and the Tableau dashboard remain in progress.
+**Dataset:** Sample Superstore
 
-## 🎯 Project Objectives
+The dataset contains transactional retail sales information, including:
 
-- Prepare a reliable dataset for business analysis.
-- Calculate four key performance indicators (KPIs).
-- Document the meaning of all 23 dataset columns.
-- Compare sales and profitability across product categories and subcategories.
-- Identify high-performing and loss-making product areas.
-- Evaluate business performance across customer segments and regions.
-- Export analytical results into reusable CSV files.
-- Develop an interactive Tableau dashboard.
-- Communicate findings through a final business report.
+| Attribute | Description |
+|---|---|
+| Order ID | Unique order identifier |
+| Order Date | Date the order was placed |
+| Ship Date | Date the order was shipped |
+| Customer ID | Unique customer identifier |
+| Customer Name | Customer name |
+| Segment | Customer segment |
+| Region | Sales region |
+| Category | Product category |
+| Sub-Category | Product sub-category |
+| Product Name | Product description |
+| Sales | Sales amount |
+| Quantity | Number of units sold |
+| Discount | Discount applied |
+| Profit | Profit or loss generated |
 
-## 🛠️ Tools & Technologies
+**Dataset dimensions:**
+- Orders: 9,994 records
+- Returns: 296 records
+- People: 4 records
+- Analysis period: January 2014 – December 2017
 
-| Tool | Purpose |
+## Technology Stack
+
+| Tool / Technology | Purpose |
 |---|---|
 | Python | Data processing and analysis |
-| Pandas | Data cleaning, aggregation, and KPI calculations |
-| NumPy | Numerical operations where required |
-| Matplotlib & Seaborn | Exploratory data visualization |
-| Jupyter Notebook | Executing and documenting the analysis |
-| Tableau | Planned interactive dashboard |
-| Git & GitHub | Version control and project documentation |
+| Google Colab | Python development environment |
+| Pandas | Data manipulation and cleaning |
+| NumPy | Numerical operations |
+| Matplotlib | Data visualization |
+| Seaborn | Exploratory data visualization |
+| Microsoft Power BI | Interactive dashboard development |
+| DAX | KPI and measure calculations |
+| Git & GitHub | Version control and project collaboration |
 
-## 📂 Dataset Overview
+## Project Workflow
 
-The project uses a Superstore-style transactional dataset containing order details, customer information, product classifications, geographical information, sales, discounts, and profit.
+1. **Data Understanding:** Examined the Orders, Returns, and People datasets.
+2. **Data Cleaning:** Standardized column names and text values, converted data types, handled missing values, and prepared the return indicator.
+3. **Data Integration:** Combined return information with order records.
+4. **Feature Engineering:** Created Year, Month, Month Name, Quarter, and YearMonth features.
+5. **KPI Calculation:** Calculated sales, profit, orders, customers, average order value, and profit margin.
+6. **Exploratory Data Analysis:** Investigated category, product, regional, customer-segment, discount, and time-based performance.
+7. **Dashboard Development:** Built interactive visualizations in Power BI.
+8. **Business Recommendations:** Identified performance patterns and potential areas for improvement.
 
-The original workbook contains three sheets:
+## Key Performance Indicators
 
-| Sheet | Description |
-|---|---|
-| Orders | Order lines, dates, customers, products, quantities, sales, discounts, and profit |
-| People | Regional manager information |
-| Returns | Order IDs associated with returned orders |
+The following KPIs were calculated from the cleaned dataset:
 
-### Dataset Summary
-
-| Metric | Value |
+| KPI | Value |
 |---|---:|
-| Order-line records | 10,194 |
-| Distinct orders | 5,111 |
-| Regional managers | 4 |
-| Returned orders | 296 |
-| Dataset columns | 23 |
+| Total Sales | $2,297,200.86 |
+| Total Profit | $286,397.02 |
+| Total Orders | 5,009 |
+| Total Customers | 793 |
+| Average Order Value | $458.61 |
+| Profit Margin | 12.47% |
+| Total Quantity Sold | 37,873 |
 
-Each row represents an order line, not necessarily a complete order. Therefore, order volume is calculated using distinct `Order ID` values rather than counting rows.
+**KPI Definitions:**
 
-The source dataset contains future-dated records relative to the analysis date. These records have not been silently excluded from the reported KPI results; date-related limitations are documented below.
+- **Total Sales:** Sum of all sales transactions.
+- **Total Profit:** Sum of profit generated across transactions.
+- **Total Orders:** Count of distinct Order IDs.
+- **Total Customers:** Count of distinct Customer IDs.
+- **Average Order Value:** Total Sales divided by Total Orders.
+- **Profit Margin:** Total Profit divided by Total Sales.
 
-*The dataset source and applicable redistribution terms should be confirmed before publishing the raw data.*
-
-## 🧹 Data Cleaning & Preparation
-
-The data preparation workflow focuses on improving consistency and making the dataset suitable for analysis.
-
-Key activities include:
-
-- Inspecting dataset dimensions, column names, and data types.
-- Checking missing values and duplicate records.
-- Converting order and shipping dates to appropriate date formats.
-- Validating sales, quantity, discount, and profit fields.
-- Reviewing distinct order IDs and order-line granularity.
-- Integrating return information using order identifiers.
-- Mapping regional managers using the People sheet.
-- Validating regional mappings and merge consistency.
-- Exporting the prepared dataset for downstream analysis.
-
-### Data Quality Principles
-
-- Preserve the original source data.
-- Retain legitimate negative-profit transactions.
-- Distinguish order-line records from distinct orders.
-- Document assumptions and data limitations.
-- Validate calculations before using results in business recommendations.
-
-## 📊 Key Performance Indicators (KPIs)
-
-**Four KPIs have been calculated** using the current `superstore_for_KPI.csv` dataset.
-
-| KPI | Definition | Calculated Result |
-|---|---|---:|
-| Total Sales | Sum of all values in the Sales field | $2,326,534.35 |
-| Total Profit | Sum of all values in the Profit field | $292,296.81 |
-| Profit Margin | Total Profit ÷ Total Sales × 100 | 12.56% |
-| Total Orders | Count of distinct Order IDs | 5,111 |
-
-### KPI Interpretation
-
-- **Total Sales:** Measures the total recorded sales revenue in the dataset.
-- **Total Profit:** Measures the net profit represented by the Profit field.
-- **Profit Margin:** Shows the recorded profit as a percentage of sales.
-- **Total Orders:** Measures the number of distinct orders, avoiding the overcounting that would result from counting individual order lines.
-
-These results are calculated from the full dataset currently used for KPI analysis. They are not restricted to a selected reporting period.
-
-## 🔍 Business Performance Analysis
-
-Four main areas have been analyzed so far.
+## Exploratory Data Analysis — Key Findings
 
 ### 1. Category Performance
 
-| Category | Sales | Profit |
-|---|---:|---:|
-| Technology | $839,893.28 | $146,543.38 |
-| Furniture | $754,747.76 | $19,730.00 |
-| Office Supplies | $731,893.31 | $126,023.44 |
+- Technology generated the highest sales and profit.
+- Office Supplies recorded the highest quantity sold.
+- Furniture had a relatively low profit margin compared with the other categories.
 
-**Initial finding:** Technology has the highest sales and profit among the three categories. Furniture generates substantial sales but considerably lower profit, making its profitability worth investigating further.
+### 2. Regional Performance
 
-### 2. Subcategory Performance
-
-Subcategories have been compared using both sales and profit to avoid judging performance by revenue alone.
-
-| Subcategory | Sales | Profit |
-|---|---:|---:|
-| Chairs | $335,768.25 | $27,223.53 |
-| Phones | $331,842.64 | $45,050.83 |
-| Tables | $208,020.18 | -$17,753.21 |
-| Binders | $207,354.88 | $31,426.10 |
-| Copiers | $150,745.29 | $56,093.94 |
-| Bookcases | $115,361.20 | -$3,632.07 |
-
-*Selected subcategories are shown here; the complete subcategory results are available in the exported analysis table.*
-
-**Initial findings:**
-
-- Chairs and Phones are among the leading subcategories by sales.
-- Copiers generate the highest profit among the subcategories shown.
-- Tables and Bookcases record negative profit despite generating sales.
-- High sales do not necessarily indicate high profitability.
+- West recorded the highest sales and profit.
+- East was the second-largest contributor to sales.
+- Central had the lowest profit margin among the four regions.
 
 ### 3. Customer Segment Analysis
 
-| Segment | Sales | Profit | Distinct Orders |
-|---|---:|---:|---:|
-| Consumer | $1,170,659.79 | $136,371.45 | 2,628 |
-| Corporate | $715,806.13 | $94,249.64 | 1,552 |
-| Home Office | $440,068.43 | $61,675.73 | 931 |
+- Consumer contributed the highest total sales and profit.
+- Home Office recorded the highest profit margin among the three customer segments.
+- Corporate and Home Office had higher average order values than Consumer.
 
-**Initial finding:** Consumer contributes the highest sales, profit, and order volume among the three segments. Corporate and Home Office also contribute positively to total profit.
+### 4. Time-Based Analysis
 
-### 4. Regional Performance
+- Sales increased significantly in 2016 and 2017.
+- 2017 recorded the highest annual sales and profit.
+- November 2017 recorded the highest monthly sales in the dataset.
 
-| Region | Sales | Profit | Distinct Orders |
-|---|---:|---:|---:|
-| West | $739,813.61 | $110,798.82 | 1,635 |
-| East | $691,828.17 | $94,883.26 | 1,475 |
-| Central | $503,170.67 | $39,865.31 | 1,179 |
-| South | $391,721.90 | $46,749.43 | 822 |
+### 5. Discount and Profitability Analysis
 
-**Initial findings:**
+- Higher discount levels were associated with lower profitability in several product categories.
+- Some high-discount transactions generated negative profit.
+- Discount strategies should be evaluated alongside product category and profit margin.
 
-- West records the highest sales and profit among the four regions.
-- East is the second-highest region by sales and profit.
-- Central has higher sales than South but lower profit.
-- Regional performance should be evaluated using both sales and profitability.
+*Note: These findings describe patterns in the dataset and do not establish causal relationships.*
 
-These are descriptive findings from the current dataset, not proof of the causes behind business performance.
+## Power BI Dashboard
 
-## 📖 Dataset Column Documentation
+The dashboard is being developed with the following planned pages:
 
-A column description table has been created to explain the meaning of the dataset fields.
-
-- **Documented columns:** 23 existing dataset columns.
-- **New business-data columns created:** None by the column-description code.
-- **Documentation output:** `outputs/column_descriptions.csv`.
-
-The documentation includes fields such as `Order ID`, `Order Date`, `Customer ID`, `Category`, `Sub-Category`, `Sales`, `Quantity`, `Discount`, `Profit`, `Returned`, and `Regional Manager`.
-
-The description table helps teammates understand the data before performing additional analysis. It does not modify the original dataset or add new columns to it.
-
-
-## 📈 Tableau Dashboard — Planned
-
-The next visualization stage is an interactive Tableau dashboard based on the validated analytical results.
-
-| Planned dashboard view | Purpose |
+| Dashboard Page | Focus |
 |---|---|
-| Executive Overview | Display the four KPIs: sales, profit, profit margin, and orders |
-| Product Performance | Compare categories and subcategories by sales and profit |
-| Customer Segment Analysis | Compare segment contribution and order volume |
-| Regional Analysis | Compare regional sales and profitability |
-| Trend Analysis | Explore sales and profit over time, after validating date coverage |
+| Executive Overview | Overall business performance and KPIs |
+| Product Performance | Category, sub-category, and product analysis |
+| Time Trends | Monthly and yearly sales and profit trends |
+| Regional & Customer Analysis | Regional and customer-segment performance |
 
-Filters for reporting period, region, category, and customer segment may be included where appropriate.
+The Executive Overview page currently includes KPI cards, a monthly sales trend, and a yearly sales and profit comparison.
 
-The Tableau workbook, dashboard screenshots, and final insights will be added after implementation and validation.
+Additional dashboard pages and interactive filtering are part of the ongoing development.
 
-## 🚀 Project Roadmap
+## Repository Structure
 
-- [x] Inspect and prepare the sales dataset
-- [x] Perform initial data validation
-- [x] Calculate four business KPIs
-- [x] Analyze category and subcategory performance
-- [x] Analyze customer segment performance
-- [x] Analyze regional performance
-- [x] Create dataset column documentation
-- [x] Export initial analysis results to CSV
-- [ ] Complete exploratory data visualization
-- [ ] Validate and analyze time-based trends
-- [ ] Develop the interactive Tableau dashboard
-- [ ] Write the final business findings and recommendations
-- [ ] Add dashboard screenshots and final project documentation
+The repository currently includes the initial KPI analysis files. Additional project outputs will be organized as development progresses.
 
+```text
+project-3-sales-business-performance-analytics/
+│
+├── KPI calculation/
+│
+├── README.md
+│
+├── kpi_summary.csv
+│
+└── superstore_for_KPI.csv
+```
 
+The cleaned datasets, EDA outputs, Power BI dashboard, and final analytical report can be added to the repository as they are finalized.
+
+## Business Recommendations
+
+Based on the exploratory analysis:
+
+1. **Improve Furniture Profitability:** Review pricing, operational costs, and discount policies for the Furniture category.
+2. **Optimize Discount Strategies:** Evaluate high-discount transactions carefully to reduce potential losses.
+3. **Leverage Technology Performance:** Identify successful Technology products and explore opportunities to expand their contribution.
+4. **Investigate Regional Differences:** Analyze the Central region's relatively low profit margin and identify improvement opportunities.
+5. **Strengthen Customer Retention:** Use segment-level purchasing patterns to develop targeted customer strategies.
+
+## Project Status
+
+<details>
+<summary>Development progress</summary>
+
+- [x] Dataset exploration
+- [x] Data cleaning and preprocessing
+- [x] KPI calculation
+- [x] Exploratory data analysis
+- [x] EDA charts and summary files
+- [x] Power BI data preparation
+- [x] Executive Overview dashboard page
+- [ ] Product Performance dashboard page
+- [ ] Time Trends dashboard page
+- [ ] Regional & Customer Analysis dashboard page
+- [ ] Final dashboard validation
+- [ ] Final analytical report and recommendations
+
+</details>
+
+## Contributors
+
+This is a collaborative academic project.
+
+- Jinal Sasiya
+
+## Conclusion
+
+This project demonstrates how data analytics and business intelligence tools can be used to extract meaningful insights from transactional retail data. By combining Python-based analysis with Power BI visualizations, the project aims to provide a comprehensive view of business performance and support informed decision-making.
+
+---
+
+**Project:** Sales & Business Performance Analytics Dashboard  
+**Dataset:** Sample Superstore  
+**Tools:** Python, Google Colab, Microsoft Power BI, DAX, GitHub
