@@ -209,7 +209,7 @@ This is a collaborative academic project.
 - Anvi Gupta
 - Mohd Faizan Usmani
 - Dasari Adithya
-
+- Sarthak Raina
 ## Conclusion
 
 This project demonstrates how data analytics and business intelligence tools can be used to extract meaningful insights from transactional retail data. By combining Python-based analysis with Power BI visualizations, the project aims to provide a comprehensive view of business performance and support informed decision-making.
