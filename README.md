@@ -182,6 +182,10 @@ project-3-sales-business-performance-analytics/
 │       ├── top_products_by_sales.csv
 │       └── yearly_summary.csv
 │
+├── Report/
+│   ├── Sales_Business_Performance_Analytics_Report.pdf
+│   └── Group_5_Sales_Business_Performance_Analytics.pptx
+│
 └── README.md
 ```
 
