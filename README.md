@@ -152,21 +152,37 @@ The repository currently includes the initial KPI analysis files. Additional pro
 ```text
 project-3-sales-business-performance-analytics/
 │
+├── Dataset/
+│   ├── Sample - Superstore.xlsm
+│   └── superstore_powerbi.csv
+│
 ├── EDA/
 │   ├── figures/
+│   │   ├── category_discount_impact.png
+│   │   ├── category_sales_profit_performance.png
+│   │   ├── customer_segment_performance.png
+│   │   ├── discount_impact_on_profit_margin.png
+│   │   ├── monthly_sales_profit_trend.png
+│   │   ├── regional_sales_profit_performance.png
+│   │   ├── top_10_products_by_profit.png
+│   │   ├── top_10_products_by_sales.png
+│   │   └── yearly_sales_profit_performance.png
+│   │
 │   ├── notebooks/
+│   │   └── Sales_Business_Performance_Analysis.ipynb
+│   │
 │   └── outputs/
+│       ├── category_discount_analysis.csv
+│       ├── category_summary.csv
+│       ├── discount_summary.csv
+│       ├── monthly_sales.csv
+│       ├── region_summary.csv
+│       ├── segment_summary.csv
+│       ├── top_products_by_profit.csv
+│       ├── top_products_by_sales.csv
+│       └── yearly_summary.csv
 │
-├── KPI calculation/
-│   ├── category_analysis.csv
-│   ├── region_analysis.csv
-│   ├── segment_analysis.csv
-│   └── subcategory_analysis.csv
-│
-├── README.md
-├── Sales_Business_Performance_Anal...
-├── kpi_summary.csv
-└── superstore_for_KPI.csv
+└── README.md
 ```
 
 The cleaned datasets, EDA outputs, Power BI dashboard, and final analytical report can be added to the repository as they are finalized.
