@@ -152,12 +152,20 @@ The repository currently includes the initial KPI analysis files. Additional pro
 ```text
 project-3-sales-business-performance-analytics/
 │
+├── EDA/
+│   ├── figures/
+│   ├── notebooks/
+│   └── outputs/
+│
 ├── KPI calculation/
+│   ├── category_analysis.csv
+│   ├── region_analysis.csv
+│   ├── segment_analysis.csv
+│   └── subcategory_analysis.csv
 │
 ├── README.md
-│
+├── Sales_Business_Performance_Anal...
 ├── kpi_summary.csv
-│
 └── superstore_for_KPI.csv
 ```
 
